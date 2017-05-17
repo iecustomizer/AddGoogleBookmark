@@ -1,0 +1,26 @@
+<script type="text/javascript">
+// Add the current document to Google Bookmarks
+var win=external.menuArguments;
+var doc=win.document;
+var meta=doc.querySelector('meta[name=keywords]');
+var labels='';
+if(meta){labels=meta.getAttribute('content');}
+meta=doc.querySelector('meta[name=description]');
+var annotation='';
+if(meta){annotation=meta.getAttribute('content');}
+var sURL=doc.URL;
+    var urlStr = 'https://www.google.com/bookmarks/mark?op=add&output=popup&bkmk=' + escape(sURL) + '&title=' + escape(doc.title)+'&labels=' + escape(labels) + '&annotation=' + escape(annotation);
+    var features = "width=550,height=450, left=0, top=0";
+try
+{
+    var oWindow = window.open(urlStr, "googlebookmarks", features);
+}
+catch(e)
+{
+alert(e.message+'\nFailed.');
+}
+finally
+{
+
+}
+</script>
